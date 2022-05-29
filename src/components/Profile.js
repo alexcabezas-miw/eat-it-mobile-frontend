@@ -31,15 +31,15 @@ const styles = StyleSheet.create({
     },
 })
 
-class Contact extends Component {
+class Profile extends Component {
     render() {
         return (
             <ScrollView style={styles.scroll}>
                 <View style={styles.container}>
                     <Card containerStyle={styles.cardContainer}>
-                        <ProfileHeaderComponent name={this.props.name} avatar={this.props.avatar} />
+                        <ProfileHeaderComponent {...this.props} />
                         <Separator />
-                        <ProfileInformationComponent />
+                        <ProfileInformationComponent {...this.props} />
                     </Card>
                 </View>
             </ScrollView>
@@ -47,4 +47,4 @@ class Contact extends Component {
     }
 }
 
-export default Contact
+export default Profile

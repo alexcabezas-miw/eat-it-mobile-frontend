@@ -41,6 +41,13 @@ const styles = StyleSheet.create({
         paddingBottom: 8,
         textAlign: 'center',
     },
+    emailText: {
+        color: '#FFF',
+        fontSize: 15,
+        fontWeight: 'bold',
+        paddingBottom: 8,
+        textAlign: 'center',
+    }
 })
 
 class ProfileHeaderComponent extends Component {
@@ -49,6 +56,7 @@ class ProfileHeaderComponent extends Component {
         const {
             avatar,
             name,
+            username
         } = this.props
 
         return (
@@ -64,6 +72,8 @@ class ProfileHeaderComponent extends Component {
                             source={{ uri: avatar }}
                         />
                         <Text style={styles.userNameText}>{name}</Text>
+                        <Text style={styles.emailText}>@{username}</Text>
+
                     </View>
                 </ImageBackground>
             </View>

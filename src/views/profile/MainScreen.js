@@ -9,7 +9,11 @@ const Tab = createBottomTabNavigator();
 export default function MainScreen() {
     return (
         <NavigationContainer>
-            <Tab.Navigator>
+            <Tab.Navigator screenOptions={({ route }) => ({
+                tabBarLabelStyle: {
+                    fontSize: 17,
+                },
+            })}>
                 <Tab.Screen name="Mi perfil" component={ProfileScreen} options={{
                     tabBarLabel: 'Mi perfil',
                     tabBarIcon: ({ color, size }) => (
