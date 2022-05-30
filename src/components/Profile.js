@@ -6,7 +6,6 @@ import {
     View,
 } from 'react-native'
 
-import Separator from './shared/SeparatorComponent'
 import ProfileHeaderComponent from './profile/ProfileHeaderComponent'
 import ProfileInformationComponent from './profile/ProfileInformationComponent'
 
@@ -38,7 +37,6 @@ class Profile extends Component {
                 <View style={styles.container}>
                     <Card containerStyle={styles.cardContainer}>
                         <ProfileHeaderComponent {...this.props} />
-                        <Separator />
                         <ProfileInformationComponent {...this.props} />
                     </Card>
                 </View>
