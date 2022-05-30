@@ -64,12 +64,12 @@ class ProfileHeaderComponent extends Component {
                 <ImageBackground
                     style={styles.headerBackgroundImage}
                     blurRadius={10}
-                    source={{ uri: avatar }}
+                    source={{ uri: avatar ? avatar : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgSmojUgwjIB87c4Q0hLCAyl__oiTySWGWJUZtUNHlHjBALLzTsu_vMHYMaEwLts4QEoo&usqp=CAU' }}
                 >
                     <View style={styles.headerColumn}>
                         <Image
                             style={styles.userImage}
-                            source={{ uri: avatar }}
+                            source={{ uri: avatar ? avatar : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgSmojUgwjIB87c4Q0hLCAyl__oiTySWGWJUZtUNHlHjBALLzTsu_vMHYMaEwLts4QEoo&usqp=CAU' }}
                         />
                         <Text style={styles.userNameText}>{name}</Text>
                         <Text style={styles.emailText}>@{username}</Text>
