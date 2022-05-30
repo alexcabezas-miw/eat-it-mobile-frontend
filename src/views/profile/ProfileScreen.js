@@ -1,18 +1,48 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { ActivityIndicator } from 'react-native'
 
-import contactData from '../../components/contact.json'
+import UsersService from '../../service/users/UsersService'
 
 import Profile from '../../components/Profile'
+import { View } from 'native-base'
 
-const ProfileScreen = () => <Profile {...contactData} />
 
-ProfileScreen.navigationOptions = () => ({
-    header: null,
-})
+export default class ProfileScreen extends Component {
 
-ProfileScreen.propTypes = {
-    navigation: PropTypes.object.isRequired,
+    constructor(props) {
+        super(props)
+        this.UsersService = new UsersService()
+        this.state = {
+            userData: undefined,
+            isLoading: true
+        }
+    }
+
+    componentDidMount() {
+        this.UsersService.getUserByUsername("acabezas", (err, user) => {
+            if (err) {
+                console.log(err)
+            }
+            else {
+                this.setState({ userData: user })
+            }
+            this.setState({ isLoading: false })
+        })
+    }
+
+    render() {
+        const { userData, isLoading } = this.state
+        return (
+            <View>
+                {
+                    isLoading ?
+                        <ActivityIndicator />
+                        :
+                        < Profile {...userData} />
+                }
+            </View>
+        )
+    }
 }
 
-export default ProfileScreen
+

@@ -10,6 +10,7 @@ export default function MainScreen() {
     return (
         <NavigationContainer>
             <Tab.Navigator screenOptions={({ route }) => ({
+                headerShown: false,
                 tabBarLabelStyle: {
                     fontSize: 17,
                 },
