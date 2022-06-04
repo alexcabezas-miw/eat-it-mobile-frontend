@@ -1,6 +1,6 @@
 import React from "react";
 import { NativeBaseProvider, Box } from "native-base";
-import MainScreen from "./src/views/profile/MainScreen";
+import MainScreen from "./src/views/MainScreen";
 
 
 export default function App() {

@@ -1,7 +1,8 @@
 import React from "react";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import ProfileScreen from "./ProfileScreen";
+import ProfileScreen from "./profile/ProfileScreen";
+import ProductScreen from "./products/ProductScreen";
 import { Ionicons } from '@expo/vector-icons';
 
 const Tab = createBottomTabNavigator();
@@ -21,7 +22,12 @@ export default function MainScreen() {
                         <Ionicons name="person-circle" color={color} size={size} />
                     ),
                 }} />
+
             </Tab.Navigator>
         </NavigationContainer>
     );
 }
+
+/**
+ * 
+ */
