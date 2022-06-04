@@ -20,11 +20,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    emailContainer: {
-        backgroundColor: '#FFF',
-        flex: 1,
-        paddingTop: 30,
-    },
     scroll: {
         backgroundColor: '#FFF',
     },
