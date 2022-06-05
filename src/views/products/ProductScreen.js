@@ -21,9 +21,11 @@ export default class ProfileScreen extends Component {
 
     componentDidMount() {
         const { barcode } = this.props.route.params;
+        const { navigation } = this.props;
         this.productsService.getProductByBarcode(barcode, (err, product) => {
             if (err) {
-                console.log(err)
+                navigation.navigate("Scanner", { notFound: true });
+                return;
             }
             else {
                 this.setState({ productData: product })

@@ -11,7 +11,7 @@ export default class SearchScreen extends Component {
         return (
             <Stack.Navigator>
                 <Stack.Screen
-                    name="Buscar"
+                    name="Buscador"
                     component={SearchComponent}
                 />
                 <Stack.Screen name="Product" component={ProductScreen} />
