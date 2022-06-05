@@ -1,18 +1,18 @@
-const BASE_URL = "http://192.168.1.51:8080"
+import HttpService from "../HttpService";
+
+const BASE_URL = "http://192.168.1.51:8080" // FIXME: Replace with prod url when final version is release
 
 export default class UsersService {
+
+    constructor() {
+        this.httpService = new HttpService()
+    }
 
 
     // TODO: refactor
     async getUserByUsername(userName, callback) {
         try {
-            const basicAuth = "Basic YWNhYmV6YXM6MTIzNDU=" // TODO: This token should come from a store...
-            const userRequest = await fetch(BASE_URL + `/users/${userName}`, {
-                headers: new Headers({
-                    'Authorization': basicAuth
-                })
-            })
-            const user = await userRequest.json()
+            const user = await this.httpService.get(BASE_URL + `/users/${userName}`)
             callback(null, user)
         } catch (error) {
             callback(error, null)

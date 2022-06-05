@@ -6,9 +6,12 @@ import SearchScreen from "./products/SearchScreen";
 import ScanScreen from "./products/ScanScreen";
 
 
+
 import { Ionicons } from '@expo/vector-icons';
+import CredentialsProviderService from "../service/CredentialsProviderService";
 
 const Tab = createBottomTabNavigator();
+CredentialsProviderService.getInstance().setCredentials("acabezas", "12345") // FIXME: Remove when creating the login
 
 export default function MainScreen() {
     return (
@@ -42,7 +45,3 @@ export default function MainScreen() {
         </NavigationContainer>
     );
 }
-
-/**
- * 
- */
