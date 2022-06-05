@@ -1,13 +1,16 @@
-const BASE_URL = "http://192.168.1.51:8081"
+import HttpService from "../HttpService";
+
+const BASE_URL = "http://192.168.1.51:8081" // FIXME: Replace with prod url when final version is release
 
 export default class ProductService {
 
+    constructor() {
+        this.httpService = new HttpService()
+    }
 
-    // TODO: refactor
     async getProductByBarcode(barcode, callback) {
         try {
-            const productRequest = await fetch(BASE_URL + `/products/barcode/${barcode}`)
-            const product = await productRequest.json()
+            const product = await this.httpService.get(BASE_URL + `/products/barcode/${barcode}`)
             callback(null, product)
         } catch (error) {
             callback(error, null)
@@ -16,8 +19,7 @@ export default class ProductService {
 
     async getProductsByName(name, callback) {
         try {
-            const productRequest = await fetch(BASE_URL + `/products/name/${name}`)
-            const products = await productRequest.json()
+            const products = await this.httpService.get(BASE_URL + `/products/name/${name}`)
             callback(null, products)
         } catch (error) {
             callback(error, null)

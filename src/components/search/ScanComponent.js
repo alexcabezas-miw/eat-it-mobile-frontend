@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
-import ConfirmDialog from '../shared/ConfirmDialog';
-import { TabRouter } from '@react-navigation/native';
-
 
 export default function ScanComponent({ navigation, route }) {
     const [hasPermission, setHasPermission] = useState(null);
