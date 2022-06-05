@@ -1,15 +1,21 @@
+
 import React, { Component } from 'react'
-import {
-    View,
-    Text
-} from 'react-native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SearchComponent from '../../components/search/SearchComponent';
+import ProductScreen from './ProductScreen';
+
 
 export default class SearchScreen extends Component {
     render() {
+        const Stack = createNativeStackNavigator();
         return (
-            <View>
-                <Text>Search screen</Text>
-            </View>
-        )
+            <Stack.Navigator>
+                <Stack.Screen
+                    name="Buscar"
+                    component={SearchComponent}
+                />
+                <Stack.Screen name="Product" component={ProductScreen} />
+            </Stack.Navigator>
+        );
     }
 }

@@ -43,8 +43,8 @@ export default class ProductInformationComponent extends Component {
                     <Text style={styles.ingredientsText}>Ingredientes: </Text>
                 </View>
                 <View style={styles.ingredientsContainer}>
-                    {mockedIngredients.map(item => (
-                        <IngredientComponent ingredientName={item.key} />
+                    {mockedIngredients.map((item, i) => (
+                        <IngredientComponent key={i} ingredientName={item.key} />
                     ))}
                 </View>
             </View>

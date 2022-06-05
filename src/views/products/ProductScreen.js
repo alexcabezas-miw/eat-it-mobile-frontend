@@ -20,7 +20,8 @@ export default class ProfileScreen extends Component {
     }
 
     componentDidMount() {
-        this.productsService.getProductByBarcode("barcode1", (err, product) => {
+        const { barcode } = this.props.route.params;
+        this.productsService.getProductByBarcode(barcode, (err, product) => {
             if (err) {
                 console.log(err)
             }

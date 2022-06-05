@@ -13,4 +13,14 @@ export default class ProductService {
             callback(error, null)
         }
     }
+
+    async getProductsByName(name, callback) {
+        try {
+            const productRequest = await fetch(BASE_URL + `/products/name/${name}`)
+            const products = await productRequest.json()
+            callback(null, products)
+        } catch (error) {
+            callback(error, null)
+        }
+    }
 }
