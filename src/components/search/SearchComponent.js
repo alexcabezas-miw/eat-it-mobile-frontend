@@ -35,7 +35,6 @@ export default class SearchComponent extends Component {
 
     render() {
         const { products, isLoading } = this.state;
-
         return (
             <View style={styles.container}>
                 <SearchBar

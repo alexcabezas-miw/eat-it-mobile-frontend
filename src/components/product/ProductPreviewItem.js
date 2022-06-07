@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         elevation: 2,
         fontSize: 35,
         padding: 10,
-        justifyContent: 'flex-initial'
+        justifyContent: 'flex-start'
     },
     apto: {
         backgroundColor: 'green'
@@ -42,8 +42,6 @@ const styles = StyleSheet.create({
         fontSize: 22,
 
     },
-    previewIconContainer: {
-    }
 })
 
 export default class ProductPreviewItem extends Component {
