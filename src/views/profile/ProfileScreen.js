@@ -5,6 +5,7 @@ import UsersService from '../../service/users/UsersService'
 
 import Profile from '../../components/Profile'
 import { View } from 'native-base'
+import CredentialsProviderService from '../../service/CredentialsProviderService'
 
 
 export default class ProfileScreen extends Component {
@@ -19,7 +20,8 @@ export default class ProfileScreen extends Component {
     }
 
     componentDidMount() {
-        this.UsersService.getUserByUsername("acabezas", (err, user) => {
+        const username = CredentialsProviderService.getInstance().getUsername()
+        this.UsersService.getUserByUsername(username, (err, user) => {
             if (err) {
                 console.log(err)
             }
