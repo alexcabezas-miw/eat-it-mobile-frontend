@@ -17,4 +17,19 @@ export default class HttpService {
             throw error
         }
     }
+
+    async post(url, content) {
+        try {
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify(content) 
+            })
+            return await request.text()
+        } catch(error) {
+            throw error;
+        }
+    }
 }

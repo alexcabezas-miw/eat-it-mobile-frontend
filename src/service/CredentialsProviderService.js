@@ -7,6 +7,10 @@ export default class CredentialsProviderService {
         this.password = undefined
     }
 
+    getUsername() {
+        return this.username
+    }
+
     getApplicationCredentials() {
         return "Basic " + base64.encode(this.username + ":" + this.password)
     }
