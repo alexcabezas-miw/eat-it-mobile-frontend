@@ -10,7 +10,7 @@ export default function StartScreen({ navigation }) {
     <Background>
       <Logo />
       <Paragraph>
-        ¡La app en la que debes confiar!
+        ¡La app en la que puedes confiar!
       </Paragraph>
       <Paragraph>
         ¿Listo para la aventura?
