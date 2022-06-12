@@ -15,13 +15,12 @@ CredentialsProviderService.getInstance().setCredentials("acabezas", "12345") // 
 
 export default function MainScreen() {
     return (
-        <NavigationContainer>
             <Tab.Navigator screenOptions={({ route }) => ({
                 headerShown: false,
                 tabBarLabelStyle: {
                     fontSize: 17,
                 },
-            })}>
+            })} initialRouteName="Profile">
                 <Tab.Screen name="Scan" component={ScanScreen} options={{
                     tabBarLabel: 'Scan',
                     tabBarIcon: ({ color, size }) => (
@@ -34,7 +33,7 @@ export default function MainScreen() {
                         <Ionicons name="search" color={color} size={size} />
                     ),
                 }} />
-                <Tab.Screen name="Mi perfil" component={ProfileScreen} options={{
+                <Tab.Screen name="Profile" component={ProfileScreen} options={{
                     tabBarLabel: 'Mi perfil',
                     tabBarIcon: ({ color, size }) => (
                         <Ionicons name="person-circle" color={color} size={size} />
@@ -42,6 +41,5 @@ export default function MainScreen() {
                 }} />
 
             </Tab.Navigator>
-        </NavigationContainer>
     );
 }
