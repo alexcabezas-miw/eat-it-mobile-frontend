@@ -36,7 +36,7 @@ export default class ProfileScreen extends Component {
             <View>
                 {
                     isLoading ?
-                        <ActivityIndicator />
+                        <ActivityIndicator style={{marginTop: 100}} />
                         :
                         < Profile {...userData} />
                 }
