@@ -67,9 +67,9 @@ export default function LoginScreen({ navigation }) {
             Acceder
           </Button>
           <View style={styles.row}>
-            <Text>¿No tienes una cuenta? ¡Pues regístrate! </Text>
+            <Text>¿No tienes una cuenta?</Text>
             <TouchableOpacity onPress={() => navigation.replace('RegisterScreen')}>
-              <Text style={styles.link}>Registrarse</Text>
+              <Text style={styles.link}> Regístrate</Text>
             </TouchableOpacity>
           </View>  
       </View>}
@@ -86,6 +86,7 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     marginTop: 4,
+    justifyContent: 'center'
   },
   forgot: {
     fontSize: 13,
