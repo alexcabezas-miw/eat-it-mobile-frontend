@@ -20,6 +20,10 @@ export default class CredentialsProviderService {
         this.password = password
     }
 
+    getAppSpecialUser() {
+        return "Basic ZWF0LWl0LWFwcDoxMjM0NQ=="
+    }
+
     static getInstance() {
         if (!this.instance) {
             this.instance = new CredentialsProviderService()

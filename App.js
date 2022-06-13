@@ -7,6 +7,7 @@ import { ConfirmProvider } from 'react-native-confirm-dialog'
 import StartScreen from "./src/views/auth/StartScreen";
 import LoginScreen from "./src/views/auth/LoginScreen";
 import {StatusBar} from 'react-native';
+import RegisterScreen from "./src/views/auth/RegisterScreen";
 
 
 export default function App() {
@@ -29,6 +30,11 @@ export default function App() {
             <Stack.Screen
               name="LoginScreen"
               component={LoginScreen}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="RegisterScreen"
+              component={RegisterScreen}
               options={{headerShown: false}}
             />
             <Stack.Screen

@@ -20,13 +20,34 @@ export default class HttpService {
 
     async post(url, content) {
         try {
+            const basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
             const request = await fetch(url, {
                 method: 'POST',
                 headers: new Headers({
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': basicAuth
                 }),
                 body: JSON.stringify(content) 
             })
+            return await request.text()
+        } catch(error) {
+            throw error;
+        }
+    }
+
+    async post(url, content, credentials) {
+        try {
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': credentials
+                }),
+                body: JSON.stringify(content) 
+            })
+            if(request.status == 400) {
+                throw Error()
+            }
             return await request.text()
         } catch(error) {
             throw error;
