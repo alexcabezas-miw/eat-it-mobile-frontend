@@ -73,8 +73,12 @@ export default function RegisterScreen({ navigation }) {
         userService.createUser(user, err => {
             if(err) {
                 setLoading(false)
-                console.error(err);
-                setUsername({...username, error: err})
+                if(err.status == 400) {
+                  setUsername({...username, error: err.errorMessage})
+                }
+                else {
+                  alert(err.errorMessage)
+                }
                 return;
             }
             setLoading(false)

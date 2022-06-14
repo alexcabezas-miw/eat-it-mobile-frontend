@@ -45,8 +45,8 @@ export default class HttpService {
                 }),
                 body: JSON.stringify(content) 
             })
-            if(request.status == 400) {
-                throw Error()
+            if(request.status != 201) {
+                return {status: request.status}
             }
             return await request.text()
         } catch(error) {
