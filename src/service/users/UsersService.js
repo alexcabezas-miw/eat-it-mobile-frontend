@@ -21,6 +21,7 @@ export default class UsersService {
     async createUser(user, callback) {
         try {
             const applicationCredentialUser = CredentialsProviderService.getInstance().getAppSpecialUser()
+            console.log(applicationCredentialUser)
             await this.httpService.post(BASE_URL + `/users`, user, applicationCredentialUser)
             callback(null)
         } catch (error) {

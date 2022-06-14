@@ -1,3 +1,4 @@
+import {USER_APP_CREDENTIALS} from '@env'
 import base64 from 'react-native-base64'
 
 export default class CredentialsProviderService {
@@ -21,7 +22,7 @@ export default class CredentialsProviderService {
     }
 
     getAppSpecialUser() {
-        return "Basic ZWF0LWl0LWFwcDoxMjM0NQ=="
+        return USER_APP_CREDENTIALS
     }
 
     static getInstance() {
