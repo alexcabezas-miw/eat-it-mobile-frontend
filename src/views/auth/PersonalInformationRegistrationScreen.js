@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native'
+import { View, StyleSheet, TouchableOpacity } from 'react-native'
 import { Text } from 'react-native-paper'
 import Background from '../../components/auth/Background'
 import Logo from '../../components/auth/Logo'
@@ -9,7 +9,6 @@ import TextInput from '../../components/auth/TextInput'
 import BackButton from '../../components/auth/BackButton'
 import { theme } from '../../components/theme'
 import ValuePicker from '../../components/auth/ValuePicker'
-import UsersService from '../../service/users/UsersService'
 
 export default function PersonalInformationRegistrationScreen({ navigation }) {
   const [name, setName] = useState({ value: '', error: '' })
@@ -80,6 +79,7 @@ export default function PersonalInformationRegistrationScreen({ navigation }) {
       <BackButton goBack={navigation.goBack} />
         <Logo />
         <Header>¡Bienvenido/a a bordo!</Header>
+        <Header>1/2: Información personal</Header>
         <TextInput
             label="Nombre completo"
             returnKeyType="next"
@@ -99,7 +99,7 @@ export default function PersonalInformationRegistrationScreen({ navigation }) {
         />
         <TextInput
             label="Contraseña"
-            returnKeyType="done"
+            returnKeyType="next"
             value={password.value}
             onChangeText={(text) => setPassword({ value: text, error: '' })}
             error={!!password.error}
@@ -108,7 +108,7 @@ export default function PersonalInformationRegistrationScreen({ navigation }) {
         />
         <TextInput
             label="Nacionalidad"
-            returnKeyType="done"
+            returnKeyType="next"
             value={nationality.value}
             onChangeText={(text) => setNationality({ value: text, error: '' })}
             error={!!nationality.error}
@@ -118,6 +118,7 @@ export default function PersonalInformationRegistrationScreen({ navigation }) {
             <TextInput
                 containerStyle={{width: "45%"}}
                 label="Edad"
+                returnKeyType="next"
                 value={age.value}
                 keyboardType="number-pad"
                 onChangeText={(text) => setAge({ value: text, error: '' })}

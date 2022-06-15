@@ -11,7 +11,7 @@ export default class AuthService {
 
     async validateCredentials(username, password, callback) {
         try {
-            const response = await this.httpService.post(BASE_URL + `/auth`, {username, password})
+            const response = await this.httpService.postWithoutAuthentication(BASE_URL + `/auth`, {username, password})
             callback(null, response === 'true')
         } catch (error) {
             callback(error, null)

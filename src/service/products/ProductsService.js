@@ -1,6 +1,6 @@
 import HttpService from "../HttpService";
 
-const BASE_URL = "http://192.168.1.51:8081" // FIXME: Replace with prod url when final version is release
+const BASE_URL = "https://eat-it-products-app.herokuapp.com" // FIXME: Replace with prod url when final version is release
 
 export default class ProductService {
 
@@ -23,6 +23,24 @@ export default class ProductService {
             callback(null, products)
         } catch (error) {
             callback(error, null)
+        }
+    }
+
+    async getAllRestrictions(callback) {
+        try {
+            const restrictions = await this.httpService.get(BASE_URL + `/restrictions`)
+            callback(null, restrictions)
+        } catch(error) {
+            callback(error, [])
+        }
+    }
+
+    async getIngredientsByName(ingredientName, callback) {
+        try {
+            const ingredients = await this.httpService.get(BASE_URL + `/ingredients/${ingredientName}`)
+            callback(null, ingredients)
+        } catch(error) {
+            callback(error, [])
         }
     }
 }

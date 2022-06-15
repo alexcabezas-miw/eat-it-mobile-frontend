@@ -27,6 +27,7 @@ export default class UsersService {
                     callback({status: 400, errorMessage: "¡El usuario ya existe!"})
                 }
                 else {
+                    console.log(response.status)
                     callback({status: 500, errorMessage: "¡Error inesperado!"})
                 }
             }
@@ -34,7 +35,8 @@ export default class UsersService {
                 callback(null)
             }
         } catch (error) {
-            callback({status: 500, errorMessage: "Error inesperado"})
+            console.log(error)
+            callback({status: 500, errorMessage: "err"})
         }
     }
 }
