@@ -10,6 +10,7 @@ import UsersService from '../../service/users/UsersService'
 
 import { View, Text, Alert, ActivityIndicator } from 'react-native'
 import RestrictionsModalComponent from '../../components/product/RestrictionsModalComponent'
+import IngredientsModalComponent from '../../components/product/IngredientsModalComponent'
 
 export default class IngredientsRegistrationScreen extends Component {
 
@@ -17,10 +18,12 @@ export default class IngredientsRegistrationScreen extends Component {
       super(props)
       this.userService = new UsersService()
       this.selectedRestrictions = []
+      this.selectedIngredients = []
       this.state = {
         restrictionModalVisible: false,
         ingredientModalVisible: false,
         userRestrictions: [],
+        userIngredients: [],
         isLoading: false
       }
     }
@@ -56,6 +59,7 @@ export default class IngredientsRegistrationScreen extends Component {
     finishSignUp() {
       const {userdata} = this.props.route.params
       userdata.restrictions = this.state.userRestrictions
+      userdata.restrictedIngredients = this.state.userIngredients
       this.userService.createUser(userdata, err => {
         if(err) {
             this.setState({isLoading: false})
@@ -93,7 +97,7 @@ export default class IngredientsRegistrationScreen extends Component {
               <View>
                 <Header>2. ¿Hay algun alimento que el primer apartado no cubra y quieras eliminar de tu dieta?</Header>
                 <Text>Si hay algun alimento que no haya sido cubierto por el apartado anterior, ¡Este es el momento de añadirlo!</Text>
-                <AddElementsButton label={"Añadir ingredientes"} onTouch={() => console.log("Hello ingredientes!!")}/>
+                <AddElementsButton label={"Añadir ingredientes"} onTouch={this.toggleIngredientsModal}/>
               </View>
             </View>
             <RestrictionsModalComponent
@@ -103,6 +107,14 @@ export default class IngredientsRegistrationScreen extends Component {
                   this.toggleRestrictionModal()
                 }}
                 selectedItems={this.selectedRestrictions}
+            />
+            <IngredientsModalComponent
+                isVisible={this.state.ingredientModalVisible}
+                onCancelButton={() => {
+                  this.setState({userIngredients: this.selectedIngredients})
+                  this.toggleIngredientsModal()
+                }}
+                selectedItems={this.selectedIngredients}
             />
             {this.state.isLoading && <ActivityIndicator/>}
             {!this.state.isLoading && <Button
@@ -117,10 +129,3 @@ export default class IngredientsRegistrationScreen extends Component {
       )
     }
 }
-
-/*
-
-
-
-
-*/
