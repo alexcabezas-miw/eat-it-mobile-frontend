@@ -13,6 +13,9 @@ export default class CredentialsProviderService {
     }
 
     getApplicationCredentials() {
+        if(!this.username || !this.password) {
+            return undefined
+        }
         return "Basic " + base64.encode(this.username + ":" + this.password)
     }
 
@@ -23,6 +26,11 @@ export default class CredentialsProviderService {
 
     getAppSpecialUser() {
         return USER_APP_CREDENTIALS
+    }
+
+    clearCredentials() {
+        this.username = undefined
+        this.password = undefined
     }
 
     static getInstance() {

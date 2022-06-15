@@ -21,11 +21,22 @@ export default class UsersService {
     async createUser(user, callback) {
         try {
             const applicationCredentialUser = CredentialsProviderService.getInstance().getAppSpecialUser()
-            console.log(applicationCredentialUser)
-            await this.httpService.post(BASE_URL + `/users`, user, applicationCredentialUser)
-            callback(null)
+            const response = await this.httpService.post(BASE_URL + `/users`, user, applicationCredentialUser)
+            if(response.status) {
+                if(response.status == 400) {
+                    callback({status: 400, errorMessage: "¡El usuario ya existe!"})
+                }
+                else {
+                    console.log(response.status)
+                    callback({status: 500, errorMessage: "¡Error inesperado!"})
+                }
+            }
+            else {
+                callback(null)
+            }
         } catch (error) {
-            callback("¡El usuario ya existe!")
+            console.log(error)
+            callback({status: 500, errorMessage: "err"})
         }
     }
 }

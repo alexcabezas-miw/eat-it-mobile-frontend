@@ -5,7 +5,10 @@ export default class HttpService {
 
     async get(url) {
         try {
-            const basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
+            let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
+            if(!basicAuth) {
+                basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
+            }
             const request = await fetch(url, {
                 headers: new Headers({
                     'Authorization': basicAuth
@@ -18,14 +21,12 @@ export default class HttpService {
         }
     }
 
-    async post(url, content) {
+    async postWithoutAuthentication(url, content) {
         try {
-            const basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
             const request = await fetch(url, {
                 method: 'POST',
                 headers: new Headers({
                     'Content-Type': 'application/json',
-                    'Authorization': basicAuth
                 }),
                 body: JSON.stringify(content) 
             })
@@ -45,8 +46,8 @@ export default class HttpService {
                 }),
                 body: JSON.stringify(content) 
             })
-            if(request.status == 400) {
-                throw Error()
+            if(request.status != 201) {
+                return {status: request.status}
             }
             return await request.text()
         } catch(error) {
