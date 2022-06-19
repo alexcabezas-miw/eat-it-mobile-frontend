@@ -54,4 +54,22 @@ export default class HttpService {
             throw error;
         }
     }
+
+    async delete(url) {
+        try {
+            let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
+            if(!basicAuth) {
+                basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
+            }
+            const request = await fetch(url, {
+                method: 'DELETE',
+                headers: new Headers({
+                    'Authorization': basicAuth
+                }),
+            })
+            return await request.text()
+        } catch(error) {
+            throw error;
+        }
+    }
 }

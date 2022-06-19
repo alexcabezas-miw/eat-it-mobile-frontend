@@ -1,5 +1,3 @@
-// Will contain email, age, description, ...
-
 import React, { Component } from 'react'
 import { Icon } from 'react-native-elements'
 import {

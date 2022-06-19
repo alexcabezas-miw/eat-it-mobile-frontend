@@ -8,10 +8,13 @@ import StartScreen from "./src/views/auth/StartScreen";
 import LoginScreen from "./src/views/auth/LoginScreen";
 import {StatusBar} from 'react-native';
 import RegisterScreen from "./src/views/auth/RegisterScreen";
+import CredentialsProviderService from "./src/service/CredentialsProviderService";
 
 
 export default function App() {
   const Stack = createStackNavigator();
+
+  CredentialsProviderService.getInstance().clearCredentials()
 
   return (
     <ConfirmProvider>
