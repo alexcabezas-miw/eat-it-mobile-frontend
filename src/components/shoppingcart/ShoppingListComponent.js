@@ -4,7 +4,6 @@ import ShoppingCartItemPreviewItem from '../../views/shoppingcart/ShoppingCartIt
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import ShoppingCartService from '../../service/shoppingcart/ShoppingCartService';
-import { useIsFocused } from '@react-navigation/native'
 
 
 export default class ShoppingListComponent extends Component {
@@ -19,7 +18,10 @@ export default class ShoppingListComponent extends Component {
     }
 
     componentDidMount() {
-        this.setState({products: []})
+        this.loadItems()
+    }
+
+    loadItems() {
         this.setState({isLoading: true})
         this.shoppingCartService.listItems((err, products) => {
             if(err) {
@@ -92,7 +94,7 @@ export default class ShoppingListComponent extends Component {
                                 alert(err)
                             } else {
                                 alert("Producto eliminado correctamente")
-                                this.componentDidMount()
+                                this.loadItems()
                             }
                         })
                     }

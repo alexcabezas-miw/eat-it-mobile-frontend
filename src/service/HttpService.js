@@ -55,6 +55,24 @@ export default class HttpService {
         }
     }
 
+    async put(url) {
+        try {
+            let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
+            if(!basicAuth) {
+                basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
+            }
+            const request = await fetch(url, {
+                method: 'PUT',
+                headers: new Headers({
+                    'Authorization': basicAuth
+                }),
+            })
+            return await request.text()
+        } catch(error) {
+            throw error;
+        }
+    }
+
     async delete(url) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();

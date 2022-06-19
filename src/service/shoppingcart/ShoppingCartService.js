@@ -13,6 +13,9 @@ export default class ShoppingCartService {
         try {
             const shoppingListBarcodes = await this.httpService.get(BASE_URL + `/shoppingcart/items`)
             const shoppingListProducts = []
+            if(shoppingListBarcodes.length == 0) {
+                callback(null, [])
+            }
             shoppingListBarcodes.forEach(item => {
                 this.productService.getProductByBarcode(item.barcode, (err, prod) => {
                     if(err) {
@@ -34,6 +37,15 @@ export default class ShoppingCartService {
     async removeItemFromShoppingCart(productBarcode, callback) {
         try {
             await this.httpService.delete(BASE_URL + `/shoppingcart/clean/${productBarcode}`)
+            callback(null)
+        } catch(err) {
+            callback(err)
+        }
+    }
+
+    async addProductToShoppingCart(productBarcode, callback) {
+        try {
+            await this.httpService.put(BASE_URL + `/shoppingcart/add/${productBarcode}`)
             callback(null)
         } catch(err) {
             callback(err)
