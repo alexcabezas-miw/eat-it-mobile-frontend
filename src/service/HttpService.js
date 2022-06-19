@@ -55,6 +55,26 @@ export default class HttpService {
         }
     }
 
+    async postContent(url, content) {
+        try {
+            let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
+            if(!basicAuth) {
+                basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
+            }
+            const request = await fetch(url, {
+                method: 'POST',
+                headers: new Headers({
+                    'Authorization': basicAuth,
+                    'Content-Type': 'application/json',
+                }),
+                body: JSON.stringify(content)
+            })
+            return await request.json()
+        } catch(error) {
+            throw error;
+        }
+    }
+
     async put(url) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();

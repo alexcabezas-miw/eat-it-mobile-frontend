@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
 import {
-    Image,
-    ImageBackground,
     Text,
     View,
-    StyleSheet
+    StyleSheet,
+    ActivityIndicator
 } from 'react-native'
+
+import UsersService from "../../service/users/UsersService"
 
 
 const styles = StyleSheet.create({
-    containerValid: {
+    container: {
         flexDirection: 'column',
         height: 75,
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: '#e1e1e1',
+    },
+    
+    valid: {
         backgroundColor: '#4CAF50',
     },
 
-    containerInvalid: {
-        flexDirection: 'column',
-        height: 75,
-        alignItems: 'center',
-        justifyContent: 'center',
+    invalid: {
         backgroundColor: '#F44336',
     },
 
@@ -39,29 +40,29 @@ export default class ProductAdviseComponent extends Component {
 
     constructor(props) {
         super(props)
-        this.state = {
-            canEatIt: true,
-        }
     }
 
     render() {
-        const { canEatIt } = this.state
-        const { product } = this.props
+        const { canEatIt } = this.props
 
         return (
-            canEatIt ?
-                (
-                    <View style={styles.containerValid}>
-                        <Text style={styles.adviseText}>APTO</Text>
-                    </View>
-                )
-                :
-                (
-                    <View style={styles.containerInvalid}>
-                        <Text style={styles.adviseText}>NO APTO</Text>
-                    </View>
-                )
-
+            <View style={[styles.container, this.resolveStyle(canEatIt)]}>
+                {canEatIt === undefined && (<ActivityIndicator/>)}
+                {canEatIt && (<Text style={styles.adviseText}>APTO</Text>)}
+                {canEatIt === false && (<Text style={styles.adviseText}>NO APTO</Text>)}
+            </View>
         )
+    }
+
+    resolveStyle(canEatIt) {
+        if(canEatIt === undefined) {
+            return undefined
+        }
+        if(canEatIt === true) {
+            return styles.valid
+        }
+        if(canEatIt === false) {
+            return styles.invalid
+        }
     }
 }

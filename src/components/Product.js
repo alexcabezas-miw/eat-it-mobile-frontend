@@ -10,6 +10,7 @@ import {
 import ProductHeaderComponent from './product/ProductHeaderComponent'
 import ProductAdviseComponent from './product/ProductAdviseComponent'
 import ProductInformationComponent from './product/ProductInformationComponent'
+import UsersService from '../service/users/UsersService'
 
 const height = Dimensions.get('window').height
 
@@ -39,6 +40,27 @@ const styles = StyleSheet.create({
 export default class Product extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            canEatIt: undefined,
+            blockingIngredients: []
+        }
+        this.userService = new UsersService()
+    }
+
+    componentDidMount() {
+        const { product } = this.props
+        this.userService.canEatProduct(product.ingredients, (err, response) => {
+            if(err) {
+                console.error(err)
+                alert("Error mientras se determinaba si el alimento podía ser comido o no")
+            }
+            else {
+                this.setState({
+                    canEatIt: response.canEatIt,
+                    blockingIngredients: response.blockingIngredients
+                })
+            }
+        })
     }
 
     render() {
@@ -49,8 +71,8 @@ export default class Product extends Component {
                         <ProductHeaderComponent product={this.props.product} />
                     </Card>
                     <Card containerStyle={styles.infoCardContainer}>
-                        <ProductAdviseComponent product={this.props.product} />
-                        <ProductInformationComponent product={this.props.product} />
+                        <ProductAdviseComponent product={this.props.product} canEatIt={this.state.canEatIt} />
+                        <ProductInformationComponent product={this.props.product} blockingIngredients={this.state.blockingIngredients} />
                     </Card>
                 </View>
             </ScrollView>
