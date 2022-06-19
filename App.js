@@ -1,4 +1,5 @@
 import React from "react";
+import 'react-native-gesture-handler';
 import { NativeBaseProvider } from "native-base";
 import MainScreen from "./src/views/MainScreen";
 import {createStackNavigator} from '@react-navigation/stack';

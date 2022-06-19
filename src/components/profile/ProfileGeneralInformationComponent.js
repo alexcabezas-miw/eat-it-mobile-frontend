@@ -6,6 +6,9 @@ import {
     StyleSheet
 } from 'react-native'
 
+import { MaterialIcons } from '@expo/vector-icons';
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -44,12 +47,13 @@ const styles = StyleSheet.create({
     iconRow: {
         flex: 2,
         justifyContent: 'center',
+        alignItems: 'center'
     },
 })
 
 class ProfileGeneralInformationComponent extends Component {
     render() {
-        const { email, gender, age, nationality } = this.props
+        const { gender, age, nationality } = this.props
         return (
             <View style={styles.container}>
                 {this.ageWeightHeightView(gender, age, nationality)}
@@ -62,10 +66,10 @@ class ProfileGeneralInformationComponent extends Component {
             <View style={styles.topInformationContainer}>
                 <View>
                     <View style={styles.iconRow}>
-                        <Icon
+                        <MaterialIcons
                             name="today"
                             underlayColor="transparent"
-                            iconStyle={styles.emailIcon}
+                            style={styles.emailIcon}
                         />
                     </View>
                     <View style={styles.emailRow}>
@@ -77,10 +81,10 @@ class ProfileGeneralInformationComponent extends Component {
 
                 <View>
                     <View style={styles.iconRow}>
-                        <Icon
+                        <MaterialIcons
                             name="face"
                             underlayColor="transparent"
-                            iconStyle={styles.emailIcon}
+                            style={styles.emailIcon}
                         />
                     </View>
                     <View style={styles.emailRow}>
@@ -92,10 +96,10 @@ class ProfileGeneralInformationComponent extends Component {
 
                 <View>
                     <View style={styles.iconRow}>
-                        <Icon
+                        <MaterialIcons
                             name="flag"
                             underlayColor="transparent"
-                            iconStyle={styles.emailIcon}
+                            style={styles.emailIcon}
                         />
                     </View>
                     <View style={styles.emailRow}>
