@@ -6,8 +6,12 @@ import {
     View,
     Text,
     StyleSheet,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native'
+
+import ShoppingCartService from '../../service/shoppingcart/ShoppingCartService';
+
 
 const styles = StyleSheet.create({
     container: {
@@ -47,28 +51,43 @@ const styles = StyleSheet.create({
 export default class ProductPreviewItem extends Component {
     constructor(props) {
         super(props)
+        this.shoppingCartService = new ShoppingCartService()
     }
 
     render() {
         const { data } = this.props
         return (
-            <View style={[styles.container]} onStartShouldSetResponder={() => this.handleGoToProductView(data)}>
-                <View>
-                    <Image
-                        style={styles.previewImage}
-                        source={{ uri: data.image ? data.image : 'https://cajasgraf.com.ar/productos/images/df.jpg' }}
-                    />
+            <TouchableOpacity onPress={() => this.handleGoToProductView(data)}>
+                <View style={[styles.container]}>
+                    <View>
+                        <Image
+                            style={styles.previewImage}
+                            source={{ uri: data.image ? data.image : 'https://cajasgraf.com.ar/productos/images/df.jpg' }}
+                        />
+                    </View>
+                    <View style={styles.previewTextContainer}>
+                        <Text style={styles.previewText}>{data.name}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => this.addProductToShoppingCart(data.barcode)}>
+                        <Ionicons name="cart" color={'grey'} size={35} />
+                    </TouchableOpacity>
                 </View>
-                <View style={styles.previewTextContainer}>
-                    <Text style={styles.previewText}>{data.name}</Text>
-                </View>
-                <Ionicons name="cart" color={'grey'} size={30} />
-
-            </View>
+            </TouchableOpacity>
+            
         )
     }
 
     handleGoToProductView(product) {
         this.props.navigation.navigate('Product', { barcode: product.barcode })
+    }
+
+    addProductToShoppingCart(barcode) {
+        this.shoppingCartService.addProductToShoppingCart(barcode, (err) => {
+            if(err) {
+                alert(err)
+            } else {
+                alert("¡El producto ha sido añadido a la cesta!")
+            }
+        })
     }
 }
