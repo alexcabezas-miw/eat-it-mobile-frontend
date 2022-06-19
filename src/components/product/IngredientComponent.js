@@ -10,7 +10,7 @@ import {
 const styles = StyleSheet.create({
     container: {
         padding: 5,
-        backgroundColor: '#bdbdbd',
+        backgroundColor: '#e1e1e1',
         borderColor: 'black',
         borderWidth: 1,
         borderRadius: 15,

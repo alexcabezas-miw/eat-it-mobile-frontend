@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'
 
 
 import {
@@ -9,9 +9,6 @@ import {
     Image,
     TouchableOpacity
 } from 'react-native'
-
-import ShoppingCartService from '../../service/shoppingcart/ShoppingCartService';
-
 
 const styles = StyleSheet.create({
     container: {
@@ -48,10 +45,9 @@ const styles = StyleSheet.create({
     },
 })
 
-export default class ProductPreviewItem extends Component {
+export default class ShoppingCartItemPreviewItem extends Component {
     constructor(props) {
         super(props)
-        this.shoppingCartService = new ShoppingCartService()
     }
 
     render() {
@@ -68,26 +64,15 @@ export default class ProductPreviewItem extends Component {
                     <View style={styles.previewTextContainer}>
                         <Text style={styles.previewText}>{data.name}</Text>
                     </View>
-                    <TouchableOpacity onPress={() => this.addProductToShoppingCart(data.barcode)}>
-                        <Ionicons name="cart" color={'grey'} size={35} />
+                    <TouchableOpacity onPress={() => this.props.onDeleteItem(data.barcode)}>
+                        <Ionicons name="trash" color={'grey'} size={30} />
                     </TouchableOpacity>
                 </View>
             </TouchableOpacity>
-            
         )
     }
 
     handleGoToProductView(product) {
         this.props.navigation.navigate('Product', { barcode: product.barcode })
-    }
-
-    addProductToShoppingCart(barcode) {
-        this.shoppingCartService.addProductToShoppingCart(barcode, (err) => {
-            if(err) {
-                alert(err)
-            } else {
-                alert("¡El producto ha sido añadido a la cesta!")
-            }
-        })
     }
 }

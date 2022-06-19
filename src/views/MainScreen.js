@@ -7,6 +7,7 @@ import ScanScreen from "./products/ScanScreen";
 
 
 import { Ionicons } from '@expo/vector-icons';
+import ShoppingCartScreen from "./shoppingcart/ShoppingCartScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,7 +18,14 @@ export default function MainScreen() {
                 tabBarLabelStyle: {
                     fontSize: 17,
                 },
-            })} initialRouteName="Profile">
+            })} initialRouteName="ShoppingCart">
+                <Tab.Screen name="ShoppingCart" component={ShoppingCartScreen} options={{
+                    tabBarLabel: 'Lista',
+                    unmountOnBlur: true,
+                    tabBarIcon: ({ color, size }) => (
+                        <Ionicons name="ios-cart-outline" color={color} size={size} />
+                    ),
+                }} />
                 <Tab.Screen name="Scan" component={ScanScreen} options={{
                     tabBarLabel: 'Scan',
                     tabBarIcon: ({ color, size }) => (

@@ -33,17 +33,14 @@ const styles = StyleSheet.create({
 export default class ProductInformationComponent extends Component {
 
     render() {
-        const mockedIngredients = [
-            { key: "Agua" }, { key: "Harina" }, { key: "Cebolla" }, { key: "Carne de pavo" },
-            { key: "Lechuga" }, { key: "Arroz" }, { key: "Caldo de pollo" }, { key: "Ajo" }, { key: "Orégano" }, { key: "Cacahuetes" }]
-
+        const {product} = this.props;
         return (
             <View style={styles.container}>
                 <View>
                     <Text style={styles.ingredientsText}>Ingredientes: </Text>
                 </View>
                 <View style={styles.ingredientsContainer}>
-                    {mockedIngredients.map((item, i) => (
+                    {product.ingredients.map((item, i) => (
                         <IngredientComponent key={i} ingredientName={item.key} />
                     ))}
                 </View>
