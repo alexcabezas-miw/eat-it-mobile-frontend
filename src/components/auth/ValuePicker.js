@@ -8,6 +8,7 @@ export default function ValuePicker({ containerStyle, error, ...props }) {
     return ( 
         <RNPickerSelect
             style={pickerSelectStyles}
+
             {...props}
         />
     );
@@ -30,13 +31,12 @@ export default function ValuePicker({ containerStyle, error, ...props }) {
     inputAndroid: {
         fontSize: 16,
         paddingVertical: 28,
-        paddingHorizontal: 45,
+        paddingHorizontal: 60,
         borderWidth: 1,
         borderColor: 'gray',
         borderRadius: 4,
         color: 'black',
-        width: "100%",
         marginVertical: 14,
-        paddingRight: 30, // to ensure the text is never behind the icon
+        backgroundColor: "white",
     },
   });

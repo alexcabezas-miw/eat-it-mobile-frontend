@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
         height: "100%"
     },
     emptyListText: {
-        color: 'grey'
+        color: 'grey',
+        textAlign: 'center'
     }
 })
