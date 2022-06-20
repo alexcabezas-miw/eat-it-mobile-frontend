@@ -30,23 +30,16 @@ export default function ScanComponent({ navigation, route }) {
         setShowingDialog(true)
         Alert.alert(
             "¡Bien visto!",
-            "Parece que este producto no lo tenemos registrado... ¿Te gustaría crearlo?",
+            "Parece que este producto no lo tenemos registrado... ¡Lo sentimos!",
             [
                 {
-                    text: "No",
+                    text: "Cerrar",
                     onPress: () => {
                         route.params.notFound = false
                         setShowingDialog(false)
                     },
                     style: "cancel"
                 },
-                {
-                    text: "Si",
-                    onPress: () => {
-                        route.params.notFound = false
-                        setShowingDialog(false)
-                    }
-                }
             ]
         );
     }
