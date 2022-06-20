@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
     },
     scroll: {
         backgroundColor: '#FFF',
+        height: "100%"
     },
 })
 
@@ -30,10 +31,8 @@ class Profile extends Component {
         return (
             <ScrollView style={styles.scroll}>
                 <View style={styles.container}>
-                    <Card containerStyle={styles.cardContainer}>
-                        <ProfileHeaderComponent {...this.props} />
-                        <ProfileInformationComponent {...this.props} />
-                    </Card>
+                    <ProfileHeaderComponent {...this.props} />
+                    <ProfileInformationComponent {...this.props} />
                 </View>
             </ScrollView>
         )

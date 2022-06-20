@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import {
-    Image,
-    ImageBackground,
     Text,
     View,
     StyleSheet
@@ -17,6 +15,11 @@ const styles = StyleSheet.create({
         margin: 2
     },
 
+    blocking: {
+        backgroundColor: 'white',
+        borderColor: '#ff8a80',  
+    },
+
     ingredientText: {
         fontSize: 20
     }
@@ -29,9 +32,9 @@ export default class IngredientComponent extends Component {
     }
 
     render() {
-        const { ingredientName } = this.props
+        const { ingredientName, blocking } = this.props
         return (
-            <View style={styles.container}>
+            <View style={[styles.container, blocking ? styles.blocking : undefined]}>
                 <Text style={styles.ingredientText}>{ingredientName}</Text>
             </View>
         )

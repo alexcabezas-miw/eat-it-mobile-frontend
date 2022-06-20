@@ -39,4 +39,13 @@ export default class UsersService {
             callback({status: 500, errorMessage: "err"})
         }
     }
+
+    async canEatProduct(ingredients, callback) {
+        try {
+            const response = await this.httpService.postContent(BASE_URL + `/users/eatit`, {ingredients})
+            callback(null, response)
+        } catch (error) {
+            callback(error, null)
+        }
+    }
 }

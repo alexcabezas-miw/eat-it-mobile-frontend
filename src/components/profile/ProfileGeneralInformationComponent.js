@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Icon } from 'react-native-elements'
 import {
     Text,
     View,
@@ -13,7 +12,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'column',
-        margin: 10
+        margin: 10,
     },
     informationContainer: {
         flexDirection: 'row',
@@ -23,9 +22,8 @@ const styles = StyleSheet.create({
     topInformationContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        marginBottom: 10,
         padding: 4,
-        marginTop: 5,
+        paddingTop: 5,
     },
     emailColumn: {
         flexDirection: 'row',

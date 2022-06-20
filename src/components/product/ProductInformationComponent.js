@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
 export default class ProductInformationComponent extends Component {
 
     render() {
-        const {product} = this.props;
+        const {product, blockingIngredients} = this.props;
+
         return (
             <View style={styles.container}>
                 <View>
@@ -41,7 +42,7 @@ export default class ProductInformationComponent extends Component {
                 </View>
                 <View style={styles.ingredientsContainer}>
                     {product.ingredients.map((item, i) => (
-                        <IngredientComponent key={i} ingredientName={item.key} />
+                        <IngredientComponent key={i} ingredientName={item} blocking={blockingIngredients.includes(item) ? true : false} />
                     ))}
                 </View>
             </View>
