@@ -14,7 +14,7 @@ export default class ProfileRestrictionsInformationComponent extends Component {
             <View style={styles.container}>
                 <Text style={styles.labelText}>Restricciones a las que pertenezco: </Text>
                 <View style={styles.ingredientsContainer}>
-                    {restrictions.length == 0 && <Text style={[styles.labelText, {fontStyle: 'italic'}]}>Sin configurar</Text>}
+                    {restrictions.length == 0 && <Text style={[styles.labelText, {fontStyle: 'italic', fontWeight: 'normal'}]}>Sin configurar</Text>}
                     {restrictions.length != 0 && restrictions.map((restriction, index) => <IngredientComponent key={index} ingredientName={restriction}/>) }
                 </View>
             </View>
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     },
 
     labelText: {
-        fontSize: 20
+        fontSize: 20,
+        fontWeight: 'bold'
     }
 })

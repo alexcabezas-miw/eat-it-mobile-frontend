@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         margin: 10,
         display: 'flex',
         flexDirection: 'column',
-        height: '100%'
     },
 
     ingredientsText: {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Card } from 'react-native-elements'
 import {
     ScrollView,
     StyleSheet,
@@ -11,8 +10,8 @@ import ProductHeaderComponent from './product/ProductHeaderComponent'
 import ProductAdviseComponent from './product/ProductAdviseComponent'
 import ProductInformationComponent from './product/ProductInformationComponent'
 import UsersService from '../service/users/UsersService'
-
-const height = Dimensions.get('window').height
+import ProductCommentsComponent from './product/ProductCommentsComponent'
+import Separator from './shared/Separator'
 
 
 const styles = StyleSheet.create({
@@ -33,7 +32,6 @@ const styles = StyleSheet.create({
     },
     scroll: {
         backgroundColor: '#FFF',
-        height
     },
 })
 
@@ -67,13 +65,15 @@ export default class Product extends Component {
         return (
             <ScrollView style={styles.scroll}>
                 <View style={styles.container}>
-                    <Card containerStyle={styles.cardContainer}>
+                    <View style={styles.cardContainer}>
                         <ProductHeaderComponent product={this.props.product} />
-                    </Card>
-                    <Card containerStyle={styles.infoCardContainer}>
+                    </View>
+                    <View style={styles.infoCardContainer}>
                         <ProductAdviseComponent product={this.props.product} canEatIt={this.state.canEatIt} />
                         <ProductInformationComponent product={this.props.product} blockingIngredients={this.state.blockingIngredients} />
-                    </Card>
+                        <Separator/>
+                        <ProductCommentsComponent product={this.props.product}/>
+                    </View>
                 </View>
             </ScrollView>
         )

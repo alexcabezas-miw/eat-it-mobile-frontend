@@ -1,6 +1,6 @@
 import HttpService from "../HttpService";
 
-const BASE_URL = "https://eat-it-products-app.herokuapp.com" // FIXME: Replace with prod url when final version is release
+const BASE_URL = "https://eat-it-products-app.herokuapp.com"
 
 export default class ProductService {
 
@@ -41,6 +41,15 @@ export default class ProductService {
             callback(null, ingredients)
         } catch(error) {
             callback(error, [])
+        }
+    }
+
+    async createComment(comment, callback) {
+        try {
+            await this.httpService.postContent(BASE_URL + `/products/comments/add`, comment)
+            callback(null)
+        } catch (error) {
+            callback(null)
         }
     }
 }
