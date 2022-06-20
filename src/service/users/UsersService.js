@@ -1,7 +1,7 @@
 import CredentialsProviderService from "../CredentialsProviderService";
 import HttpService from "../HttpService";
 
-const BASE_URL = "http://192.168.1.44:8080" // FIXME: Replace with prod url when final version is release
+const BASE_URL = "https://eat-it-users-app.herokuapp.com"
 
 export default class UsersService {
 

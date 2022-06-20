@@ -1,11 +1,13 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
-export default function BackButton({ onTouch, label }) {
+export default function BackButton({ width, onTouch, label }) {
   return (
-    <View style={styles.addLabel} onStartShouldSetResponder={onTouch}>
+    <TouchableOpacity onTouch={onTouch}>
+      <View style={[styles.addLabel, width ? {maxWidth: width} : undefined]} onStartShouldSetResponder={onTouch}>
         <Text style={styles.addLabelText}>➕ {label}</Text>
-    </View>
+      </View>
+    </TouchableOpacity>
   )
 }
 
