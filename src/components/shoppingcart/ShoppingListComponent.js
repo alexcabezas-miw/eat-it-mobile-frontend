@@ -4,6 +4,7 @@ import ShoppingCartItemPreviewItem from '../../views/shoppingcart/ShoppingCartIt
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native';
 import ShoppingCartService from '../../service/shoppingcart/ShoppingCartService';
+import Button from '../auth/Button';
 
 
 export default class ShoppingListComponent extends Component {
@@ -65,8 +66,35 @@ export default class ShoppingListComponent extends Component {
                         ))}
                 </ScrollView>
             )}
+                <Button mode={"outlined"} onPress={() => this.handleCleanList()}>Limpiar lista</Button>
             </View>
         )
+    }
+
+    handleCleanList() {
+        Alert.alert(
+            "¡Cuidado!",
+            "¿Deseas eliminar todos los productos de tu lista?",
+            [
+                {
+                    text: "No",
+                    style: "cancel"
+                },
+                {
+                    text: "Si",
+                    onPress: () => {
+                        this.shoppingCartService.clearShoppingCart((err) => {
+                            if(err) {
+                                alert(err)
+                            } else {
+                                alert("La lista se ha vaciado correctamente")
+                                this.loadItems()
+                            }
+                        })
+                    }
+                }
+            ]
+        );
     }
 
     moveToSearch() {

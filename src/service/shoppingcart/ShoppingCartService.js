@@ -43,6 +43,15 @@ export default class ShoppingCartService {
         }
     }
 
+    async clearShoppingCart(callback) {
+        try {
+            await this.httpService.delete(BASE_URL + `/shoppingcart/clean/`)
+            callback(null)
+        } catch(err) {
+            callback(err)
+        }
+    }
+
     async addProductToShoppingCart(productBarcode, callback) {
         try {
             await this.httpService.put(BASE_URL + `/shoppingcart/add/${productBarcode}`)
