@@ -1,4 +1,3 @@
-import {USER_APP_CREDENTIALS} from '@env'
 import base64 from 'react-native-base64'
 
 export default class CredentialsProviderService {
@@ -13,7 +12,7 @@ export default class CredentialsProviderService {
     }
 
     getApplicationCredentials() {
-        if(!this.username || !this.password) {
+        if (!this.username || !this.password) {
             return undefined
         }
         return "Basic " + base64.encode(this.username + ":" + this.password)
@@ -25,7 +24,7 @@ export default class CredentialsProviderService {
     }
 
     getAppSpecialUser() {
-        return USER_APP_CREDENTIALS
+        return process.env.USER_APP_CREDENTIALS
     }
 
     clearCredentials() {

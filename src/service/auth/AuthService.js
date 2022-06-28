@@ -1,6 +1,6 @@
 import HttpService from "../HttpService";
 
-const BASE_URL = "https://eat-it-auth-app.herokuapp.com" // FIXME: Replace with prod url when final version is release
+const BASE_URL = "https://eat-it-auth-app.herokuapp.com"
 
 
 export default class AuthService {
@@ -11,7 +11,7 @@ export default class AuthService {
 
     async validateCredentials(username, password, callback) {
         try {
-            const response = await this.httpService.postWithoutAuthentication(BASE_URL + `/auth`, {username, password})
+            const response = await this.httpService.postWithoutAuthentication(BASE_URL + `/auth`, { username, password })
             callback(null, response === 'true')
         } catch (error) {
             callback(error, null)
