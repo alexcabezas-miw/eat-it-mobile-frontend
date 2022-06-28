@@ -2,7 +2,7 @@ import 'dotenv/config';
 
 export default {
     name: 'EAT_IT',
-    version: '1.0.0',
+    version: '1.0.1',
     extra: {
         USER_APP_CREDENTIALS: process.env.USER_APP_CREDENTIALS
     },
@@ -10,7 +10,7 @@ export default {
         "name": "EatIt",
         "slug": "eatit-app",
         "owner": "alexcabezas",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
         "userInterfaceStyle": "light",
