@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "eat-it-frontend",
-    "slug": "eat-it-frontend",
+    "name": "EatIt",
+    "slug": "expo.dev/@alexcabezas/eatit-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,13 +18,12 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "miw.tfm.eatit",
+      "buildNumber": "1.0.0"
     },
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
-      }
+      "package": "miw.tfm.eatit",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"

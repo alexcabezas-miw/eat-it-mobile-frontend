@@ -6,7 +6,7 @@ export default class HttpService {
     async get(url) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
-            if(!basicAuth) {
+            if (!basicAuth) {
                 basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
             }
             const request = await fetch(url, {
@@ -28,10 +28,10 @@ export default class HttpService {
                 headers: new Headers({
                     'Content-Type': 'application/json',
                 }),
-                body: JSON.stringify(content) 
+                body: JSON.stringify(content)
             })
             return await request.text()
-        } catch(error) {
+        } catch (error) {
             throw error;
         }
     }
@@ -44,13 +44,13 @@ export default class HttpService {
                     'Content-Type': 'application/json',
                     'Authorization': credentials
                 }),
-                body: JSON.stringify(content) 
+                body: JSON.stringify(content)
             })
-            if(request.status != 201) {
-                return {status: request.status}
+            if (request.status != 201) {
+                return { status: request.status }
             }
             return await request.text()
-        } catch(error) {
+        } catch (error) {
             throw error;
         }
     }
@@ -58,7 +58,7 @@ export default class HttpService {
     async postContent(url, content) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
-            if(!basicAuth) {
+            if (!basicAuth) {
                 basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
             }
             const request = await fetch(url, {
@@ -70,7 +70,7 @@ export default class HttpService {
                 body: JSON.stringify(content)
             })
             return await request.json()
-        } catch(error) {
+        } catch (error) {
             throw error;
         }
     }
@@ -78,7 +78,7 @@ export default class HttpService {
     async put(url) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
-            if(!basicAuth) {
+            if (!basicAuth) {
                 basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
             }
             const request = await fetch(url, {
@@ -88,7 +88,7 @@ export default class HttpService {
                 }),
             })
             return await request.text()
-        } catch(error) {
+        } catch (error) {
             throw error;
         }
     }
@@ -96,7 +96,7 @@ export default class HttpService {
     async delete(url) {
         try {
             let basicAuth = CredentialsProviderService.getInstance().getApplicationCredentials();
-            if(!basicAuth) {
+            if (!basicAuth) {
                 basicAuth = CredentialsProviderService.getInstance().getAppSpecialUser();
             }
             const request = await fetch(url, {
@@ -106,7 +106,7 @@ export default class HttpService {
                 }),
             })
             return await request.text()
-        } catch(error) {
+        } catch (error) {
             throw error;
         }
     }
